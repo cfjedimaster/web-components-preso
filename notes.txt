@@ -1,0 +1,10 @@
+Initial notes for presentation.
+
+Intro
+What
+Why
+How
+
+resources:
+	book
+
