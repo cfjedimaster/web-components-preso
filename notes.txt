@@ -12,3 +12,16 @@ resources:
 
 To include:
 Example of PE (table sorting)
+
+at end of custom element section before going into shadow dom, 
+https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry methods
+
+notes about flow cuz im feeling unsure:
+i show custom elements, simple
+then arguments
+then i discover the issue with changing them
+so ill show attribute stuff
+then connectedCallback 
+
+then finally Shadow DOM?
+

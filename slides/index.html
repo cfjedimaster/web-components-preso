@@ -85,6 +85,7 @@ Basically riff on how I'm learning this, things still feel in flux, etc etc.
 				<li class="fragment">Visual component (layout, style) + Interactivity</li>
 				<li class="fragment">Defined with JavaScript</li>
 				<li class="fragment">First introduced in 2011</li>
+				<li class="fragment">Very, very well supported (with very minor caveats)</li>
 				</ul>
 				<aside class="notes">
 				last point is critical, w/ no JS nothing loads - on the other hand, it could be PE
@@ -96,7 +97,7 @@ Basically riff on how I'm learning this, things still feel in flux, etc etc.
 				<ul>
 				<li class="fragment">Three core technologies:</li>
 				<li class="fragment">Custom elements</li>
-				<li class="fragment">Shadow ROM</li>
+				<li class="fragment">Shadow DOM</li>
 				<li class="fragment">HTML Templates</li>
 				</ul>
 				<aside class="notes">
@@ -109,8 +110,179 @@ Basically riff on how I'm learning this, things still feel in flux, etc etc.
 				<section data-background="img/why.gif">
 					<h1>Why</h1>
 				</section>
-				
-				
+
+				<section>
+				<h2>Why</h2>
+				<ul>
+				<li class="fragment">Reusability</li>
+				<li class="fragment">Consistency</li>
+				<li class="fragment">Frameworks/UI libraries</li>
+				</ul>
+				<aside class="notes">
+				for first point, mention how smaller apps may not benefit as much
+				for second point, large teams,orgs could really benefit
+				per last point, mention how Bootstrap could be simpler to use.
+				</aside>
+				</section>
+
+				<section data-background="img/how.gif">
+					<h1>How</h1>
+				</section>
+
+				<section>
+				<h2>Custom Elements</h2>
+				<ul>
+				<li class="fragment">What happens when an element isn't recognized?</li>
+				<li class="fragment"><a href="/demos/whatsfoo.html" target="new">Click here to find out!</a></li>
+				<li class="fragment">How do we fix that?</li>
+				</ul>
+				<aside class="notes">
+Run document.querySelector('foo').constructor, 
+it's basically a div
+talk about how HTML is histortically been - you can f--- stuff up, im fine with that
+				</aside>
+				</section>
+
+				<section>
+				<h2>The Custom Elements API</h2>
+				<ul>
+				<li class="fragment">Let's you define a custom element:</li>
+				<li class="fragment">First the name (kebab case and MUST HAVE A DASH)</li>
+				<li class="fragment">Then the JavaScript class</li>
+				<li class="fragment">(Ray, talk about <code>extends</code> briefly.)</li>
+				</ul>
+				<aside class="notes">
+				assure folks - it's ok if they don't do much with JS classes 
+				</aside>
+				</section>
+
+				<section>
+				<pre><code data-line-numbers data-trim>
+				class FooCat extends HTMLElement {
+					constructor() {
+						super();
+
+						// do stuff...
+					}
+
+				}
+
+				customElements.define('foo-cat', FooCat);
+				</code></pre>
+				</section>
+
+				<section>
+				<pre><code data-line-numbers="5" data-trim>
+				class FooCat extends HTMLElement {
+					constructor() {
+						super();
+
+						this.innerHTML = "<p>Meow, meow.</p>";
+					}
+
+				}
+
+				customElements.define('foo-cat', FooCat);
+				</code></pre>
+				<p class="fragment">
+				<a href="/demos/foo-cat1.html" target="_new">Show me the demo.</a>
+				</p>
+				</section>
+
+				<section>
+				<h2>Attributes</h2>
+				<ul>
+				<li class="fragment">Same as regular HTML elements</li>
+				<li class="fragment">Your code can inspect and react to them.</li>
+				</ul>
+				</section>
+
+				<section>
+				<pre><code data-line-numbers="5-8" data-trim>
+				class FooCat extends HTMLElement {
+					constructor() {
+						super();
+
+						let name = 'Nameless';
+						if(this.hasAttribute('name')) name = 
+							this.getAttribute('name');
+						this.innerHTML = `<p>"Meow, meow.", said ${name} the cat.</p>`;
+					}
+
+				}
+
+				customElements.define('foo-cat', FooCat);
+				</code></pre>
+				<p class="fragment">
+				<a href="/demos/foo-cat2.html" target="_new">Show me the demo.</a>
+				</p>
+				</section>
+
+				<section>
+				<pre><code data-line-numbers="" data-trim>
+class PlaceKitten extends HTMLElement {
+	constructor() {
+		super();
+
+		let width = 250;
+		let height = 250;
+
+		if(this.hasAttribute('width')) width = this.getAttribute('width');
+		if(this.hasAttribute('height')) height = this.getAttribute('height');
+
+		this.innerHTML = `<img src="https://placekitten.com/${width}/${height}">`;
+
+	}
+
+}
+
+customElements.define('place-kitten', PlaceKitten);
+				</code></pre>
+				<p class="fragment">
+				<a href="/demos/place-kitten1.html" target="_new">Show me the demo.</a>
+				</p>
+				<aside class="notes">
+				Slightly more realistic demo. 
+				Show devtools, modify the image by hand.
+				Modify the attribute by hand, nothing happens
+				</aside>
+				</section>
+
+				<section>
+				<h2>Attributes</h2>
+				<ul>
+				<li class="fragment">Same as regular HTML elements (mostly!)</li>
+				<li class="fragment">If an attribute can change, you need to tell the component</li>
+				<li class="fragment">And then write to code to *handle* those changes</li>
+				</ul>
+				</section>
+
+				<section>
+				<pre><code data-trim data-line-numbers="8-13">
+				class FooCat extends HTMLElement {
+					constructor() {
+						super();
+
+						// do stuff...
+					}
+
+					static get observedAttributes() { return ['foo', 'etc']; }
+
+					attributeChangedCallback(name, oldValue, newValue) {
+						console.log(`The attribute ${name} changed from ${oldValue} to ${newValue}`);
+						// do stuff, important stuff
+					}
+
+				}
+
+				customElements.define('foo-cat', FooCat);
+
+				</code></pre>
+				<p class="fragment">
+				<a href="/demos/place-kitten2.html" target="_new">Show me the demo.</a>
+				</p>
+				</section>
+
 
 			</div>
 		</div>
@@ -125,6 +297,7 @@ Basically riff on how I'm learning this, things still feel in flux, etc etc.
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
+				slideNumber: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]

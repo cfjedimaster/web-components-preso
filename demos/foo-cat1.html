@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h2>foo-cat</h2>
+
+	<foo-cat></foo-cat>
+	
+	<hr/>
+
+	<foo-cat></foo-cat>
+
+<script>
+class FooCat extends HTMLElement {
+	constructor() {
+		super();
+
+		this.innerHTML = "<p>Meow, meow.</p>";
+	}
+
+}
+
+customElements.define('foo-cat', FooCat);
+</script>
+</body>
+</html>

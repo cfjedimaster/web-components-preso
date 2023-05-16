@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h2>Place Kitten</h2>
+
+	<place-kitten></place-kitten>
+	
+	<hr/>
+
+	<place-kitten width="500" height="500"></place-kitten>
+
+<script>
+class PlaceKitten extends HTMLElement {
+	constructor() {
+		super();
+
+		let width = 250;
+		let height = 250;
+
+		if(this.hasAttribute('width')) width = this.getAttribute('width');
+		if(this.hasAttribute('height')) height = this.getAttribute('height');
+
+		this.innerHTML = `<img src="https://placekitten.com/${width}/${height}">`;
+
+	}
+
+}
+
+customElements.define('place-kitten', PlaceKitten);
+</script>
+</body>
+</html>

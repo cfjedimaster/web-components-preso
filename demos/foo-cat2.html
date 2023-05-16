@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h2>foo-cat</h2>
+
+	<foo-cat></foo-cat>
+	
+	<hr/>
+
+	<foo-cat name="Zelda"></foo-cat>
+
+<script>
+class FooCat extends HTMLElement {
+	constructor() {
+		super();
+
+		let name = 'Nameless';
+		if(this.hasAttribute('name')) name = this.getAttribute('name');
+		this.innerHTML = `<p>"Meow, meow.", said ${name} the cat.</p>`;
+	}
+
+}
+
+customElements.define('foo-cat', FooCat);
+</script>
+</body>
+</html>
