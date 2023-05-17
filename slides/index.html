@@ -157,7 +157,7 @@ talk about how HTML is histortically been - you can f--- stuff up, im fine with 
 				</section>
 
 				<section>
-				<pre><code data-line-numbers data-trim>
+				<pre><code data-line-numbers data-trim class="javascript">
 				class FooCat extends HTMLElement {
 					constructor() {
 						super();
@@ -172,7 +172,7 @@ talk about how HTML is histortically been - you can f--- stuff up, im fine with 
 				</section>
 
 				<section>
-				<pre><code data-line-numbers="5" data-trim>
+				<pre><code data-line-numbers="5" data-trim class="javascript">
 				class FooCat extends HTMLElement {
 					constructor() {
 						super();
@@ -198,7 +198,7 @@ talk about how HTML is histortically been - you can f--- stuff up, im fine with 
 				</section>
 
 				<section>
-				<pre><code data-line-numbers="5-8" data-trim>
+				<pre><code data-line-numbers="5-8" data-trim class="javascript">
 				class FooCat extends HTMLElement {
 					constructor() {
 						super();
@@ -219,7 +219,7 @@ talk about how HTML is histortically been - you can f--- stuff up, im fine with 
 				</section>
 
 				<section>
-				<pre><code data-line-numbers="" data-trim>
+				<pre><code data-line-numbers="" data-trim class="javascript">
 class PlaceKitten extends HTMLElement {
 	constructor() {
 		super();
@@ -258,7 +258,7 @@ customElements.define('place-kitten', PlaceKitten);
 				</section>
 
 				<section>
-				<pre><code data-trim data-line-numbers="8-13">
+				<pre><code data-trim data-line-numbers="8-13" class="javascript">
 				class FooCat extends HTMLElement {
 					constructor() {
 						super();
@@ -283,6 +283,108 @@ customElements.define('place-kitten', PlaceKitten);
 				</p>
 				</section>
 
+				<section>
+				<h2>More Events</h2>
+				<ul>
+				<li class="fragment">connectedCallback</li>
+				<li class="fragment">disconnectedCallback</li>
+				<li class="fragment">adoptedCallback</li>
+				<li class="fragment">attributeChange</li>
+				</ul>
+				<aside class="notes">
+				So, atCC is one example of the life cycle events we can use in a WC, what are others?
+
+				cc - invoked when the custom element is append into a DOM connected element (also when moved)
+				dc - reverse :) 
+				adopted - moved to a new document - honestly not sure how that's going to happen
+
+				Ok - I want to focus in on connectedCallback it brings up an interesting bug...
+				</aside>
+				</section>
+
+				<section>
+				<h2>Consider...</h2>
+				<pre><code data-trim data-line-numbers class="html">
+<foo-cat></foo-cat>
+<foo-cat name="ray"></foo-cat>
+				</code></pre>
+				<p class="fragment">but what if...</p>
+				<pre class="fragment"><code data-trim data-line-numbers class="javascript">
+let cat = document.createElement('foo-cat');
+document.body.appendChild(cat);
+				</code></pre>
+				<p class="fragment">
+				Ray, show the code for ccfix.html, ccfix2.html
+				</p>
+				</section>
+
+				<section>
+				<h2>My Takeaway...</h2>
+				<ul>
+				<li class="fragment">For the most part, most of my work is in connectedCallback</li>
+				<li class="fragment">Next to nothing in constructor</li>
+				<li class="fragment">Live and learn, right?</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>The Shadow DOM</h2>
+				<ul>
+				<li class="fragment">Not nearly as cool as it sounds...</li>
+				<li class="fragment">It's an encapsulated DOM tree for your component</li>
+				<li class="fragment">Can be hidden from JavaScript</li>
+				<li class="fragment">Prevent CSS "leakage" (also not as cool as it sounds)</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Examples</h2>
+				<ul>
+				<li class="fragment">input type="date"</li>
+				<li class="fragment">input type="color"</li>
+				<li class="fragment">input type="file"</li>
+				</ul>
+				<p class="fragment">
+				<a href="/demo/inputs.html" target="_new">Demo</a>
+				</p>
+				<aside class="notes">
+				remember to show dev tools config, show user agent shadow dom
+				</aside>
+				</section>
+
+				<section>
+				<h2>Shadow DOM API</h2>
+				<pre><code data-trim data-line-numbers class="javascript">
+				class SomeWC extends HTMLElement {
+					
+					constructor() {
+						super();
+					}
+
+					connectedCallback() { 
+						const shadow = this.attachShadow({ mode: 'open' });
+
+						// can use DOM manip, like MDN shows... or 
+						shadow.innerHTML = '<p>Meow, baby.</p>'
+						
+					}
+				}
+				</code></pre>
+				<p class="fragment">
+				<a href="/demos/shadow1.html" target="_new">Show me yet another demo</a>
+				</p>
+				</section>
+
+				<section>
+				<h2>Why bother?</h2>
+				<ul>
+				<li class="fragment">CSS defined in the parent will not impact component</li>
+				<li class="fragment">Component can define it's own CSS, willy nill</li>
+				</ul>
+				<p class="fragment">
+				<a href="/demos/shadow2.html" target="_new">Show me yet another demo</a>
+				</p>
+				</section>
 
 			</div>
 		</div>

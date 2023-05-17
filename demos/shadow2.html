@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+	p {
+		background-color: pink;
+		padding: 10px;
+	}
+	</style>
+</head>
+<body>
+	<h2>foo-cat (shadow version)</h2>
+
+	<p>
+	Hi, I'm a regular paragraph. Nothing special. But my kids love me.
+	</p>
+
+	<foo-cat></foo-cat>
+	
+	<hr/>
+
+	<foo-cat name="Zelda"></foo-cat>
+
+<script>
+class FooCat extends HTMLElement {
+	constructor() {
+		super();
+
+	}
+
+	connectedCallback() {
+		let name = 'Nameless';
+		if(this.hasAttribute('name')) name = this.getAttribute('name');
+
+		const shadow = this.attachShadow({ mode: 'open' });
+
+		let style = document.createElement('style');
+		style.textContent = `
+p {
+	text-weight: bold;
+	font-size: 30px;
+	background: linear-gradient(-45deg, #ff0000 0%,#ffff00 25%,#00ff00 50%,#00ffff 75%,#0000ff 100%);
+}
+		`
+		shadow.appendChild(style);
+		
+		let p = document.createElement('p');
+		p.innerText = `"Meow, meow.", said ${name} the cat.`;
+		shadow.appendChild(p)
+	}
+}
+
+customElements.define('foo-cat', FooCat);
+</script>
+</body>
+</html>

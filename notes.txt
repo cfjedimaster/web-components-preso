@@ -25,3 +25,8 @@ then connectedCallback
 
 then finally Shadow DOM?
 
+
+css when disabled, https://www.raymondcamden.com/2023/01/24/update-to-my-slideshow-web-component-by-sime-vidas
+PE form: https://www.raymondcamden.com/2023/02/10/progressively-enhancing-a-form-with-web-components
+
+https://codepen.io/cfjedimaster/pen/jOvEwdj
