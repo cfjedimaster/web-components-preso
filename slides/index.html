@@ -386,6 +386,200 @@ document.body.appendChild(cat);
 				</p>
 				</section>
 
+				<section>
+				<h2>HTML Templates</h2>
+				<ul>
+				<li class="fragment">Defines HTML/CSS not rendered to the page</li>
+				<li class="fragment">Can be cloned and appended to DOM</li>
+				<li class="fragment">I don't like it...</li>
+				<li class="fragment">Let me show you why</li>
+				</ul>
+				<p class="fragment">
+				<a href="/demos/template1.html" target="_new">Show me yet another demo</a>
+				</p>
+				</section>
+
+				<section>
+					<h1>Ok, that sucks, now what?</h1>
+				</section>
+
+				<section>
+				<h2>Slots!</h2>
+				<ul>
+				<li class="fragment">A way for the calling document to provide information to the web component</li>
+				<li class="fragment">Can be both "by default" or named</li>
+				<li class="fragment">&lt;slot&gt;&lt;/slot&gt;</li>
+				<li class="fragment">&lt;slot name="foo"&gt;&lt;/slot&gt;</li>
+				<li class="fragment">Requires Shadow DOM</li>
+				<li class="fragment">None of this makes sense, let's look at an example.</li>
+				</ul>
+				<p class="fragment">
+				<a href="/demos/profile1.html" target="_new">Ray, show profiles1-3</a>
+				</p>
+				</section>
+
+				<section>
+				<h2>Named Slots</h2>
+				<ul>
+				<li class="fragment">In Web Component: &lt;slot name="foo"&gt;&lt;/slot&gt;</li>
+				<li class="fragment">In calling doc: &lt;p slot="foo"&gt;stuff here&lt;/p&gt;</li>
+				</ul>
+				<p class="fragment">
+				<a href="/demos/profile4.html" target="_new">Yes, another demo</a>
+				</p>
+				</section>		
+
+				<section data-background="img/examples.gif">
+					<h1>Examples</h1>
+				</section>	
+
+				<section>
+				<h2>PDF Embed Viewer</h2>
+				<ul>
+				<li class="fragment"><a href="https://developer.adobe.com/document-services/apis/pdf-embed/" target="_new">Adobe PDF Embed API</a></li>
+				<li class="fragment">Completely removes the need for any JavaScript (written by the user)</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Before</h2>
+				<pre><code data-trim>
+<div id="adobe-dc-view" style="height: 360px; width: 500px;"></div>
+<script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
+<script type="text/javascript">
+document.addEventListener("adobe_dc_view_sdk.ready", () => {
+	var adobeDCView = new AdobeDC.View({
+		clientId: "<YOUR_CLIENT_ID>", 
+		divId: "adobe-dc-view"
+	});
+
+	adobeDCView.previewFile({
+	content:{ 
+		location: { url: "https://acrobatservices.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"}},
+		metaData: {fileName: "Bodea Brochure.pdf"}
+	},
+	{ embedMode: "SIZED_CONTAINER" });
+});
+</script>
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>After</h2>
+				<pre><code data-trim class="html">
+&lt;pdf-embed 
+	url="https://acrobatservices.adobe.com/view-sdk-demo/PDFs/Bodea%20Brochure.pdf"
+	key="9861538238544ff39d37c6841344b78d"
+&gt;&lt;/pdf-embed&gt;
+&lt;script src="pdfembed.js"&gt;&lt;/script&gt;
+				</code></pre>
+				<p class="fragment">
+				<a href="https://codepen.io/cfjedimaster/pen/wvjjEWR" target="_new">CodePen Demo</a>
+				</section>
+					
+				<section>
+				<h2>Placeholder</h2>
+				<ul>
+				<li class="fragment">No external service placeholder image service</li>
+				<li class="fragment">Uses SVG, not an image (ok, an SVG is an image, you get my meaning, let's maybe argue about how to pronounce gif)</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Example</h2>
+				<pre><code data-trim class="html">
+<place-holder width="500" height="500"></place-holder>
+
+<place-holder width="300" height="300" bgcolor="pink" text="Hello World"></place-holder>
+				</code></pre>
+				<p class="fragment">
+				<a href="https://codepen.io/cfjedimaster/pen/KKRxvNx" target="_new">CodePen Demo</a>
+				</section>
+
+				<section>
+				<h2>Table Sorting</h2>
+				<ul>
+				<li class="fragment">Take a table...</li>
+				<li class="fragment">Wrap it in a web component...</li>
+				<li class="fragment">WAMMO! Instant sorting</li>
+				<li class="fragment">Best of all - doesn't break w/o JavaScript</li>
+				</ul>
+				</section>	
+
+				<section>
+				<h2>Before</h2>
+				<pre><code data-trim class="html">
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Breed</th>
+			<th>Gender</th>
+			<th>Age</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Luna</td>
+			<td>Domestic Shorthair</td>
+			<td>Female</td>
+			<td>11</td>
+		</tr>
+		<!-- lots of rows cut -->
+		<tr>
+			<td>Apollo</td>
+			<td>Persian</td>
+			<td>Male</td>
+			<td>3</td>
+		</tr>	
+	</tbody>
+</table>
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>After</h2>
+				<pre><code data-trim class="html">
+<table-sort>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Breed</th>
+			<th>Gender</th>
+			<th>Age</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Luna</td>
+			<td>Domestic Shorthair</td>
+			<td>Female</td>
+			<td>11</td>
+		</tr>
+		<!-- lots of rows cut -->
+		<tr>
+			<td>Apollo</td>
+			<td>Persian</td>
+			<td>Male</td>
+			<td>3</td>
+		</tr>	
+	</tbody>
+</table>
+</table-sort>
+				</code></pre>
+				<p class="fragment">
+				<a href="https://codepen.io/cfjedimaster/pen/OJovJee" target="_new">CodePen demo</a>
+				</p>
+				</section>
+
+				<section>
+				<h2>More Stuff</h2>
+				<ul>
+				<li class="fragment"></li>
+				</ul>
+				</section>
+
 			</div>
 		</div>
 

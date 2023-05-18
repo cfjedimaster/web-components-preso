@@ -20,14 +20,12 @@
 class FooCat extends HTMLElement {
 	constructor() {
 		super();
-
 	}
 
 	connectedCallback() {
 		let name = 'Nameless';
 		if(this.hasAttribute('name')) name = this.getAttribute('name');
 		this.innerHTML = `<p>"Meow, meow.", said ${name} the cat.</p>`;
-		console.log('called mf');
 	}
 
 }

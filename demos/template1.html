@@ -1,0 +1,36 @@
+<!--
+Demo code from MDN, https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_templates_and_slots
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+<template id="my-paragraph">
+  <p>My paragraph</p>
+</template>
+
+<h2>Template Example</h2>
+
+<my-paragraph></my-paragraph>
+
+<script>
+customElements.define(
+  "my-paragraph",
+  class extends HTMLElement {
+    constructor() {
+      super();
+      let template = document.getElementById("my-paragraph");
+      let templateContent = template.content;
+
+      const shadowRoot = this.attachShadow({ mode: "open" });
+      shadowRoot.appendChild(templateContent.cloneNode(true));
+    }
+  }
+);
+</script>
+</body>
+</html>

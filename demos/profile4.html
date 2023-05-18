@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h2>Profile</h2>
+
+	<profile-card name="Raymond Camden" email="raymondcamden@gmail.com">
+
+		<ul slot="jobs">
+			<li>Adobe</li>
+			<li>HERE</li>
+			<li>Amex (oh god was that a mistake)</li>
+			<li>And so forth...</li>
+		</ul>
+
+		<p slot="books">
+		Here are a list of book's I've written oh never mind I'm no Stephen King.
+		</p>
+	
+		<p>
+		Raymond Camden is a Senior Developer Evangelist for Adobe. He works on the Acrobat Services APIs 
+		to build powerful (and typically cat-related) PDF demos.  He is the author of multiple books on web 
+		development and has been actively blogging and presenting for almost twenty years. Raymond can be 
+		reached at his blog (<a href="https://www.raymondcamden.com">www.raymondcamden.com</a>) or via email at raymondcamden@gmail.com.
+		</p>
+		<p>
+		Also, he likes cats.
+		</p>
+
+	</profile-card>
+	
+
+<script>
+class ProfileCard extends HTMLElement {
+	constructor() {
+		super();
+	}
+
+	connectedCallback() {
+	this.attachShadow({mode: 'open'});
+	this.shadowRoot.innerHTML = `
+<style>
+div {
+     border-style:solid;
+     border-width:thin;
+	 padding: 20px;
+	 max-width: 400px;
+}
+</style>
+<div>
+	<h2>${this.getAttribute('name')}</h2>
+	<p>
+		Email: ${this.getAttribute('email')}
+	</p>
+	<slot>This is my bio.</slot>
+	<hr/>
+	<h3>Books</h3>
+	<slot name="books"></slot>
+	<hr/>
+	<h3>Jobs</h3>
+	<slot name="jobs"></slot>
+</div>
+		`;
+	}
+
+}
+
+customElements.define('profile-card', ProfileCard);
+</script>
+</body>
+</html>

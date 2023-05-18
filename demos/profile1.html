@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h2>Profile</h2>
+
+	<profile-card name="Raymond Camden" email="raymondcamden@gmail.com" 
+	bio="Raymond Camden is a Senior Developer Evangelist for Adobe. He works on the Acrobat Services APIs to build powerful (and typically cat-related) PDF demos.  He is the author of multiple books on web development and has been actively blogging and presenting for almost twenty years. Raymond can be reached at his blog (<a href='https://www.raymondcamden.com'>www.raymondcamden.com</a>) or via email at raymondcamden@gmail.com."
+	></profile-card>
+	
+
+<script>
+
+class ProfileCard extends HTMLElement {
+	constructor() {
+		super();
+	}
+
+	connectedCallback() {
+		this.innerHTML = `
+<div>
+	<h2>${this.getAttribute('name')}</h2>
+	<p>
+		Email: ${this.getAttribute('email')}
+	</p>
+	<p>
+		${this.getAttribute('bio')}
+	</p>
+</div>
+		`;
+	}
+
+}
+
+customElements.define('profile-card', ProfileCard);
+</script>
+</body>
+</html>

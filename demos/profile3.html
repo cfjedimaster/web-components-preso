@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h2>Profile</h2>
+
+	<!-- Ray, when presenting, hit enter btn tags. -->
+	<profile-card name="Raymond Camden" email="raymondcamden@gmail.com"></profile-card>
+	
+
+<script>
+class ProfileCard extends HTMLElement {
+	constructor() {
+		super();
+	}
+
+	connectedCallback() {
+	this.attachShadow({mode: 'open'});
+	this.shadowRoot.innerHTML = `
+<style>
+div {
+     border-style:solid;
+     border-width:thin;
+	 padding: 20px;
+	 max-width: 400px;
+}
+</style>
+<div>
+	<h2>${this.getAttribute('name')}</h2>
+	<p>
+		Email: ${this.getAttribute('email')}
+	</p>
+	<slot>This is my bio.</slot>
+</div>
+		`;
+	}
+
+}
+
+customElements.define('profile-card', ProfileCard);
+</script>
+</body>
+</html>
