@@ -34,7 +34,7 @@ class FooCat extends HTMLElement {
 		let name = 'Nameless';
 		if(this.hasAttribute('name')) name = this.getAttribute('name');
 
-		const shadow = this.attachShadow({ mode: 'open' });
+		this.attachShadow({ mode: 'open' });
 
 		let style = document.createElement('style');
 		style.textContent = `
@@ -44,11 +44,11 @@ p {
 	background: linear-gradient(-45deg, #ff0000 0%,#ffff00 25%,#00ff00 50%,#00ffff 75%,#0000ff 100%);
 }
 		`
-		shadow.appendChild(style);
+		this.shadowRoot.appendChild(style);
 		
 		let p = document.createElement('p');
 		p.innerText = `"Meow, meow.", said ${name} the cat.`;
-		shadow.appendChild(p)
+		this.shadowRoot.appendChild(p)
 	}
 }
 
