@@ -56,6 +56,7 @@
 				<li class="fragment">What</li>
 				<li class="fragment">Why</li>
 				<li class="fragment">How</li>
+				<li class="fragment">Examples</li>
 				<li class="fragment">Next Steps</li>
 				</ul>
 				<aside class="notes">
@@ -149,7 +150,6 @@ talk about how HTML is histortically been - you can f--- stuff up, im fine with 
 				<li class="fragment">Let's you define a custom element:</li>
 				<li class="fragment">First the name (kebab case and MUST HAVE A DASH)</li>
 				<li class="fragment">Then the JavaScript class</li>
-				<li class="fragment">(Ray, talk about <code>extends</code> briefly.)</li>
 				</ul>
 				<aside class="notes">
 				assure folks - it's ok if they don't do much with JS classes 
@@ -289,7 +289,7 @@ customElements.define('place-kitten', PlaceKitten);
 				<li class="fragment">connectedCallback</li>
 				<li class="fragment">disconnectedCallback</li>
 				<li class="fragment">adoptedCallback</li>
-				<li class="fragment">attributeChange</li>
+				<li class="fragment">attributeChangedCallback</li>
 				</ul>
 				<aside class="notes">
 				So, atCC is one example of the life cycle events we can use in a WC, what are others?
@@ -345,7 +345,7 @@ document.body.appendChild(cat);
 				<li class="fragment">input type="file"</li>
 				</ul>
 				<p class="fragment">
-				<a href="/demo/inputs.html" target="_new">Demo</a>
+				<a href="/demos/inputs.html" target="_new">Demo</a>
 				</p>
 				<aside class="notes">
 				remember to show dev tools config, show user agent shadow dom
@@ -573,6 +573,10 @@ document.addEventListener("adobe_dc_view_sdk.ready", () => {
 				</p>
 				</section>
 
+				<section data-background="img/nextsteps.gif">
+					<h1>Next Steps</h1>
+				</section>	
+
 				<section>
 				<h2>More Stuff</h2>
 				<ul>
@@ -580,6 +584,7 @@ document.addEventListener("adobe_dc_view_sdk.ready", () => {
 				<li class="fragment">This *just* landed in Safari</li>
 				<li class="fragment">Declarative Shadow Root</li>
 				<li class="fragment"><a href="https://developer.chrome.com/en/articles/declarative-shadow-dom/" target="_new">More details</a></li>
+				<li class="fragment">Custom attributes</li>
 				</ul>
 				<aside class="notes">
 I decided it was a bit much for this session, but WC can "participate" in forms, and by that I mean they can be placed 
@@ -608,6 +613,14 @@ Lets you define a shadowroot inside a paired WC.
 				</section>
 
 				<section>
+				<h2>Alternatives?</h2>
+				<ul>
+				<li><a href="https://www.11ty.dev/docs/languages/webc/" target="_new">WebC</a></li>
+				<li><a href="https://enhance.dev/" target="_new">Enhnance</a></li>
+				</ul>
+				</section>
+
+				<section>
 				<h2>Resources</h2>
 				<ul>
 				<li><a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_new">MDN</a></li>
@@ -615,6 +628,16 @@ Lets you define a shadowroot inside a paired WC.
 				<li><a href="https://open-wc.org/" target="_new">Open Web Components</a>
 				<li><a href="https://amzn.to/3MccscY" target="_new">"Web Components in Action" by Ben Farrel</a></li>
 				</ul>
+				</section>
+
+				<section>
+				<h2>Who Uses It?</h2>
+				<ul>
+				<li><a href="https://youtube.com" target="_new">Youtube</a></li>
+				<li><a href="https://github.com" target="_new">Github</a></li>
+				<li><a href="https://dev.to" target="_new">dev.to</a></li>
+				</ul>
+				<p><a href="https://chrome.google.com/webstore/detail/custom-elements-locator/eccplgjbdhhakefbjfibfhocbmjpkafc/related">Custom Elements Locator</a></p>
 				</section>
 
 				<section>
@@ -635,8 +658,7 @@ Lets you define a shadowroot inside a paired WC.
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-				slideNumber: true,
-
+				slideNumber: "c/t",
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
