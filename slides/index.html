@@ -48,6 +48,9 @@
 					<p>
 					<a href="https://github.com/cfjedimaster/web-components-preso" target="_new">github.com/cfjedimaster/web-components-preso</a>
 					</p>
+					<p>
+					<img src="img/qr.png" title="QR code for the URL">
+					</p>
 				</section>
 
 				<section>
@@ -69,7 +72,7 @@ to give you some resources to let you explore more.
 				</section>
 
 				<section>
-					<img src="img/uc.gif">
+					<img src="img/uc.gif" title="Basically riff on how I'm learning this, things still feel in flux, etc etc.">
 					<aside class="notes">
 Basically riff on how I'm learning this, things still feel in flux, etc etc. 
 					</aside>
@@ -281,6 +284,9 @@ customElements.define('place-kitten', PlaceKitten);
 				<p class="fragment">
 				<a href="/demos/place-kitten2.html" target="_new">Show me the demo.</a>
 				</p>
+				<aside class="notes">
+				Show selecting an image and changing the w/h
+				</aside>
 				</section>
 
 				<section>
@@ -362,11 +368,12 @@ document.body.appendChild(cat);
 					}
 
 					connectedCallback() { 
-						const shadow = this.attachShadow({ mode: 'open' });
 
+						this.attachShadow({ mode: 'open' });
 						// can use DOM manip, like MDN shows... or 
-						shadow.innerHTML = '<p>Meow, baby.</p>'
-						
+						this.shadowRoot.innerHTML = '<p>Meow, baby.</p>';
+
+
 					}
 				}
 				</code></pre>
@@ -379,10 +386,22 @@ document.body.appendChild(cat);
 				<h2>Why bother?</h2>
 				<ul>
 				<li class="fragment">CSS defined in the parent will not impact component</li>
-				<li class="fragment">Component can define it's own CSS, willy nill</li>
+				<li class="fragment">Component can define it's own CSS, willy nilly</li>
 				</ul>
 				<p class="fragment">
 				<a href="/demos/shadow2.html" target="_new">Show me yet another demo</a>
+				</p>
+				</section>
+
+				<section>
+				<h2>CSS selectors for Shadow DOM</h2>
+				<ul>
+				<li class="fragment"><code>:host</code> - Specifies the component itself</li>
+				<li class="fragment"><code>:host(selector)</code> - Match selector under the component</li>
+				<li class="fragment"><code>:host-context(selector)</code> - Match component in selector</li>
+				</ul>
+				<p class="fragment">
+				<a href="/demos/shadow3.html" target="_new">Show me how well you CSS, Ray!</a>
 				</p>
 				</section>
 
@@ -580,7 +599,7 @@ document.addEventListener("adobe_dc_view_sdk.ready", () => {
 				<section>
 				<h2>More Stuff</h2>
 				<ul>
-				<li class="fragment">Form participation</li>
+				<li class="fragment">Form participation (<a href="https://www.raymondcamden.com/2023/05/24/adding-form-participation-support-to-web-components" target="_new">blog post demo</a>)</li>
 				<li class="fragment">This *just* landed in Safari</li>
 				<li class="fragment">Declarative Shadow Root</li>
 				<li class="fragment"><a href="https://developer.chrome.com/en/articles/declarative-shadow-dom/" target="_new">More details</a></li>
@@ -591,7 +610,7 @@ I decided it was a bit much for this session, but WC can "participate" in forms,
 inside a form and when the form is submitted, they can send their data as part of the form. Even cooler, they can have 
 their own validation rules as well. It can even handle form resets and do custom stuff.
 
-Lets you define a shadowroot inside a paired WC. 
+Declarative shadow root Lets you define a shadowroot inside a paired WC. 
 				</aside>
 				</section>
 
@@ -618,6 +637,9 @@ Lets you define a shadowroot inside a paired WC.
 				<li><a href="https://www.11ty.dev/docs/languages/webc/" target="_new">WebC</a></li>
 				<li><a href="https://enhance.dev/" target="_new">Enhance</a></li>
 				</ul>
+				<p class="fragment">
+				Let's quickly talk about those alternatives... 
+				</p>
 				</section>
 
 				<section>
@@ -637,7 +659,7 @@ Lets you define a shadowroot inside a paired WC.
 				<li><a href="https://github.com" target="_new">Github</a></li>
 				<li><a href="https://dev.to" target="_new">dev.to</a></li>
 				</ul>
-				<p><a href="https://chrome.google.com/webstore/detail/custom-elements-locator/eccplgjbdhhakefbjfibfhocbmjpkafc/related">Custom Elements Locator</a></p>
+				<p><a href="https://chrome.google.com/webstore/detail/custom-elements-locator/eccplgjbdhhakefbjfibfhocbmjpkafc/related" target="_new">Custom Elements Locator</a></p>
 				</section>
 
 				<section>

@@ -24,8 +24,14 @@ class FooCat extends HTMLElement {
 		let name = 'Nameless';
 		if(this.hasAttribute('name')) name = this.getAttribute('name');
 
-		this.attachShadow({ mode: 'open' });
+		/*
+		const shadow = this.attachShadow({ mode: 'open' });
 
+		// can use DOM manip, like MDN shows... or 
+		shadow.innerHTML = '<p>Meow, baby.</p>'
+		*/
+
+		this.attachShadow({ mode: 'open' });
 		this.shadowRoot.innerHTML = `<p>"Meow, meow.", said ${name} the cat.</p>`;
 	}
 }
