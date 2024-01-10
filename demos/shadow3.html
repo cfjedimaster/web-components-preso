@@ -24,7 +24,7 @@
 	</blockquote>
 
 
-	<foo-cat name="Blocky" class="pink"></foo-cat>
+	<foo-cat name="Pinkalicious" class="pink"></foo-cat>
 	
 <script>
 class FooCat extends HTMLElement {
@@ -46,12 +46,13 @@ class FooCat extends HTMLElement {
  border: 1px solid red;
 }
 
+
 :host-context(blockquote) {
  display: inline-block;
  border: 1px solid blue;
 }
 
-:host-context(.pink) {
+:host(.pink) {
  display: inline-block;
  border: 1px solid pink;
 }
