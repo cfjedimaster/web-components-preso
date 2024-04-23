@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h2>Place Bacon</h2>
+
+	<place-bacon></place-bacon>
+	
+	<hr/>
+
+	<place-bacon width="700" height="400"></place-bacon>
+
+<script>
+class PlaceBacon extends HTMLElement {
+	constructor() {
+		super();
+
+		let width = 250;
+		let height = 250;
+
+		if(this.hasAttribute('width')) width = this.getAttribute('width');
+		if(this.hasAttribute('height')) height = this.getAttribute('height');
+
+		this.innerHTML = `<img src="https://placebacon.net/${width}/${height}">`;
+
+	}
+
+}
+
+customElements.define('place-bacon', PlaceBacon);
+</script>
+</body>
+</html>

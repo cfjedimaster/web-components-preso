@@ -224,7 +224,7 @@ talk about how HTML is histortically been - you can f--- stuff up, im fine with 
 
 				<section>
 				<pre><code data-line-numbers="" data-trim class="javascript">
-class PlaceKitten extends HTMLElement {
+class PlaceBacon extends HTMLElement {
 	constructor() {
 		super();
 
@@ -234,16 +234,16 @@ class PlaceKitten extends HTMLElement {
 		if(this.hasAttribute('width')) width = this.getAttribute('width');
 		if(this.hasAttribute('height')) height = this.getAttribute('height');
 
-		this.innerHTML = `<img src="https://placekitten.com/${width}/${height}">`;
+		this.innerHTML = `<img src="https://placebacon.net/${width}/${height}">`;
 
 	}
 
 }
 
-customElements.define('place-kitten', PlaceKitten);
+customElements.define('place-bacon', PlaceBacon);
 				</code></pre>
 				<p class="fragment">
-				<a href="/demos/place-kitten1.html" target="_new">Show me the demo.</a>
+				<a href="/demos/place-bacon1.html" target="_new">Show me the demo.</a>
 				</p>
 				<aside class="notes">
 				Slightly more realistic demo. 
@@ -283,7 +283,7 @@ customElements.define('place-kitten', PlaceKitten);
 
 				</code></pre>
 				<p class="fragment">
-				<a href="/demos/place-kitten2.html" target="_new">Show me the demo.</a>
+				<a href="/demos/place-bacon2.html" target="_new">Show me the demo.</a>
 				</p>
 				<aside class="notes">
 				Show selecting an image and changing the w/h
