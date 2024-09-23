@@ -45,14 +45,6 @@
 				</section>
 
 				<section>
-				<h2>Former ColdFusion Jedi</h2>
-				</section>
-
-				<section>
-				<img src="img/palp.jpg" class="r-stretch">
-				</section>
-
-				<section>
 					<p>
 					<a href="https://github.com/cfjedimaster/web-components-preso" target="_new">github.com/cfjedimaster/web-components-preso</a>
 					</p>
@@ -232,7 +224,7 @@ talk about how HTML is histortically been - you can f--- stuff up, im fine with 
 
 				<section>
 				<pre><code data-line-numbers="" data-trim class="javascript">
-class PlaceBacon extends HTMLElement {
+class PlacePicsum extends HTMLElement {
 	constructor() {
 		super();
 
@@ -242,16 +234,16 @@ class PlaceBacon extends HTMLElement {
 		if(this.hasAttribute('width')) width = this.getAttribute('width');
 		if(this.hasAttribute('height')) height = this.getAttribute('height');
 
-		this.innerHTML = `<img src="https://placebacon.net/${width}/${height}">`;
+		this.innerHTML = `<img src="https://picsum.photos/${width}/${height}">`;
 
 	}
 
 }
 
-customElements.define('place-bacon', PlaceBacon);
+customElements.define('place-picsum', PlacePicsum);
 				</code></pre>
 				<p class="fragment">
-				<a href="/demos/place-bacon1.html" target="_new">Show me the demo.</a>
+				<a href="/demos/place-picsum1.html" target="_new">Show me the demo.</a>
 				</p>
 				<aside class="notes">
 				Slightly more realistic demo. 
@@ -364,6 +356,7 @@ document.body.appendChild(cat);
 				</p>
 				<aside class="notes">
 				remember to show dev tools config, show user agent shadow dom
+				in dev tools settings, Show user agent shadow DOM
 				</aside>
 				</section>
 
@@ -609,7 +602,6 @@ document.addEventListener("adobe_dc_view_sdk.ready", () => {
 				<h2>More Stuff</h2>
 				<ul>
 				<li class="fragment">Form participation (<a href="https://www.raymondcamden.com/2023/05/24/adding-form-participation-support-to-web-components" target="_new">blog post demo</a>)</li>
-				<li class="fragment">This *just* landed in Safari</li>
 				<li class="fragment">Declarative Shadow Root</li>
 				<li class="fragment"><a href="https://developer.chrome.com/en/articles/declarative-shadow-dom/" target="_new">More details</a></li>
 				<li class="fragment">Custom attributes</li>
@@ -630,7 +622,6 @@ Declarative shadow root Lets you define a shadowroot inside a paired WC.
 					<ul>
 					<li><a href="https://stenciljs.com/" target="_new">Stencil</a></li>
 					<li><a href="https://lit.dev/" target="_new">Lit</a></li>
-					<li><a href="https://opensource.adobe.com/spectrum-web-components/" target="_new">Spectrum</a></li>
 					<li><a href="https://www.fast.design/" target="_new">FAST</a></li>
 					</ul>
 					</div>
